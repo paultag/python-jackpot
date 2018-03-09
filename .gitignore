@@ -1,3 +1,4 @@
 *.swp
 *.pyc
 jackpot*egg*
+dist
