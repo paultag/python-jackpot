@@ -19,8 +19,11 @@ def find_metadata(module):
     for name, obj in module.__dict__.items():
         if name.startswith("_") or obj is Metadata:
             continue
-        if issubclass(obj, Metadata):
-            return obj
+        try:
+            if issubclass(obj, Metadata):
+                return obj
+        except TypeError:
+            continue
     raise NoMetadataFound()
 
 
