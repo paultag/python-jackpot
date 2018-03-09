@@ -39,6 +39,8 @@ class Metadata(object):
         type, id = obj._id.split("/", 1)
         log.info("Saving {} {}".format(type, obj._id))
 
+        obj.validate()
+
         dir = os.path.join("data", type)
         if not os.path.exists(dir):
             os.makedirs(dir)

@@ -1,4 +1,5 @@
 import uuid
+import jsonschema
 
 
 def _coerce_value(value):
@@ -13,6 +14,10 @@ class BaseModel(object):
     _type = None
     _schema = None
     _related = []
+
+    def validate(self):
+        data = self.to_dict()
+        jsonschema.validate(data, self._schema)
 
     def to_dict(self):
         ret = {}
