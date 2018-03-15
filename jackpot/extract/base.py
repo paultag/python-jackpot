@@ -41,10 +41,6 @@ class Metadata(object):
 
         obj.validate()
 
-        dir = os.path.join("data", type)
-        if not os.path.exists(dir):
-            os.makedirs(dir)
-
         with open(os.path.join("data", type, id), 'w') as fd:
             json.dump(obj.to_dict(), fd)
 
